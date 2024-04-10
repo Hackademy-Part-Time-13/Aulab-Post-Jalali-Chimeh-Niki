@@ -1,0 +1,31 @@
+/* ---------- AUTHENTIFICATION ---------- */
+.auth-font {
+    font-family: Poppins;
+    font-weight: 400;
+}
+
+.auth-title {
+    font-weight: 500;
+}
+
+.auth-link {   
+    color: #0C21C1;
+    text-decoration: none;
+    font-weight: 600;
+    
+}
+
+.auth-button {
+    height: 50px;
+    border-radius: 32px;
+    border: none;
+    background: #0C21C1;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
