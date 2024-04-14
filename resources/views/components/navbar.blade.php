@@ -18,12 +18,36 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a 
-                  href="{{ route('article.create') }}" 
-                  class="dropdown-item"
-                  >Crea articolo
-                </a>
+
+              @if (Auth::user()->is_writer)
+                <li>
+                  <a 
+                    href="{{ route('article.create') }}" 
+                    class="dropdown-item"
+                    >Crea articolo
+                  </a>
+                </li>
+              @endif
+
+              @if (Auth::user()->is_revisor)
+                <li>
+                  <a 
+                    href="{{ route('revisor.dashboard') }}" 
+                    class="dropdown-item"
+                    >Dashboard Revisore
+                  </a>
+                </li>
+              @endif
+
+              @if (Auth::user()->is_admin)
+                <li>
+                  <a 
+                    href="{{ route('admin.dashboard') }}" 
+                    class="dropdown-item"
+                    >Dashboard Admin
+                  </a>
+                </li>
+              @endif
 
               <li>
                 <a 
