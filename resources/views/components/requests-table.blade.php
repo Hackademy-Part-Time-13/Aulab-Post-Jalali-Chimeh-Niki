@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover border">
+<table class="table table-dark table-striped table-hover border">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -33,7 +33,7 @@
                     @endswitch
 
 
-                    <button class="btn btn-danger text-white">Rifiuta {{$role}}</button>
+                    <a href="{{route('admin.rejectRole', compact('user'))}}" class="btn btn-danger text-white">Rifiuta {{$role}}</a>
                 </td>
             </tr>
         @endforeach

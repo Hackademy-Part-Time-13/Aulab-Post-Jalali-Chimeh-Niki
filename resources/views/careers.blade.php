@@ -8,7 +8,7 @@
     </div>
 
     <div class="container my-5">
-        <div class="row justify-content-center align-items-center border rounded p-2 shadow">
+        <div class="row justify-content-center align-items-center p-2 border rounded shadow bg-secondary-subtle">
             <div class="col-12 col-md-6">
                 <h2>Lavora come amministratore</h2>
                 <p>Cosa farai: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam assumenda officiis quaerat optio praesentium tenetur dignissimos reiciendis reprehenderit commodi. Iure temporibus eos, sunt cum facilis dignissimos. Sint velit adipisci perferendis?</p>

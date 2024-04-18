@@ -1,10 +1,12 @@
 <x-layout>
-   @if (session('message'))
-       <div class="alert alert-success text-center">
-           {{ session('message') }}
-       </div>
-    @endif 
-
+    <div class="containter-fluid p-5 text-center text-white">
+        <div class="row justify-content-center">
+            <h1 class="display-1">
+                Tutti gli articoli per: {{ $query }}
+            </h1>
+        </div>
+    </div>
+    
     <div class="container my-5">
         <div class="row justify-content-around">
             @foreach ($articles as $article)
@@ -16,7 +18,6 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->subtitle }}</p>
-
                             @if ($article->category)
                                 <a href="{{ route('article.byCategory', ['category'=> $article->category->id]) }}" class="small text-muted fst-italic text-capitalize">{{ $article->category->name }}</a>
                             @else
@@ -34,6 +35,7 @@
                                     @endforeach
                                 </p>
                             </div>
+
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                             <p class="mt-2">Redatto il {{ $article->created_at->format('d/m/Y') }} da <a href="{{ route('article.byUser', ['user'=> $article->user->id]) }}" class="small text-muted fst-italic text-capitalize">{{ $article->user->name }}</a></p>
@@ -42,7 +44,7 @@
                     </div>
                 </div>
             @endforeach
+    
         </div>
     </div>
-
 </x-layout>

@@ -3,7 +3,14 @@
     <a href="{{ route('homepage') }}" class="navbar-brand">
       <h1 class="h4 letter-spacing-2">The Aulab Post</h1>
     </a>
+
+    <form action="{{route('article.search')}}" method="GET" class="d-flex">
+      <input class="form-control me-2" type="search" name="query" placeholder="Cosa stai cercando?" aria-label="Search">
+      <button class="btn btn-outline-info text-white" type="submit">Cerca</button>
+    </form>
+
     <div class="align-self-end">
+
       @auth
         <ul class="nav">
           <li class="nav-item dropdown h5">
@@ -19,6 +26,22 @@
             
             <ul class="dropdown-menu dropdown-menu-end">
 
+              <li>
+                <a 
+                  href="{{ route('article.index') }}"
+                  class="dropdown-item"
+                  >Tutti gli articoli
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="{{ route('careers') }}"
+                  class="dropdown-item"
+                  >Lavora con noi
+                </a>
+              </li>
+
               @if (Auth::user()->is_writer)
                 <li>
                   <a 
@@ -27,6 +50,13 @@
                     >Crea articolo
                   </a>
                 </li>
+
+                <li>
+                  <a 
+                    href="{{ route('writer.dashboard') }}" 
+                    class="dropdown-item"
+                    >Dashboard Redattore
+                  </a>
               @endif
 
               @if (Auth::user()->is_revisor)

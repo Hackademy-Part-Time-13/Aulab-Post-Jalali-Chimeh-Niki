@@ -11,7 +11,9 @@
     <div class="container my-5">
         <div class="row justify-content-around text-white">
             <div class="col-12 col-md-8">
-                <img src="{{ Storage::url($article->image) }}" class="img-fluid my-3" alt="{{ $article->title }}">
+                @if ($article->image != null)
+                    <img src="{{ Storage::url($article->image) }}" class="img-fluid" alt="{{ $article->title }}">
+                @endif
                 <div class="text-center">
                     <h2>{{$article->subtitle}}</h2>
                     <div class="my-3 text-muted fst-italic">
@@ -22,7 +24,7 @@
                 <p>{{$article->body}}</p>
                 <div class="text-center">
                     <a href="{{ url()->previous() }} " class="btn btn-info text-white">Torna indietro</a>
-                    @if (Auth::user() && Auth::user()->is_revisor)
+                    @if (Auth::user() && Auth::user()->is_revisor && $article->is_accepted === null)
                         <a href="{{route('revisor.acceptArticle', compact('article'))}}" class="btn btn-success text-white">Accetta</a>
                         <a href="{{route('revisor.rejectArticle', compact('article'))}}" class="btn btn-danger text-white">Rifiuta</a> 
                     @endif

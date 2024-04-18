@@ -54,6 +54,13 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="tags" class="form-label">Tags:</label>
+                        <input name="tags" type="text" class="form-control" id="tags" value="{{ old('tags') }}">
+                        <span class="small fst-italic">Dividi ogni tag con una virgola</span>
+                    </div>
+
+
+                    <div class="mb-3">
                         <label for="body" class="form-label">Testo:
                         </label>
                         <textarea name="body" id="body" cols="30" rows="7" class="form-control">{{ old('body') }}</textarea>
