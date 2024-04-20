@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\ArticleController;
@@ -24,6 +25,10 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/careers', [PublicController::class, 'careers'])->name('careers');
 
 Route::post('/careers/submit', [PublicController::class, 'careersSubmit'])->name('careers.submit');
+
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index');
 

@@ -12,7 +12,9 @@
             @foreach ($articles as $article)
                 <div class="col-12 col-md-3 my-2">
                     <div class="card shadow">
-                        <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
+                        @if ($article->image != null)
+                            <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
+                        @endif
                         <div class="card-body">
                             <h5 class="card-title">{{$article->title}}</h5>
                             <p class="card-text">{{$article->subtitle}}</p>

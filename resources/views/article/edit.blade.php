@@ -22,7 +22,8 @@
                         
                     @endif
 
-                    <form action="{{ route('article.update', ['article' => $article->id]) }}" method="POST" class="card p-5 shadow" enctype="multipart/form-data">                        @csrf
+                    <form action="{{ route('article.update', ['article' => $article]) }}" method="POST" class="card p-5 shadow" enctype="multipart/form-data">
+                        @csrf
                         @method('PUT')
                         <div class="mb-3">
                             <label for="title" class="form-label">Titolo</label>

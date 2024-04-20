@@ -57,18 +57,18 @@
                                     <div class="form-floating">
                                         <input
                                         type="email"
-                                        class="form-control border-top-0 border-start-0 border-end-0"
+                                        class="form-control border-top-0 border-start-0 border-end-0 @error('email') is-invalid @enderror"
                                         name="email"
                                         id="email"
                                         placeholder="email"
                                         />
                                         <label for="email" class="form-label">Email</label>
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                     </div>
-                                    @error('email')
-                                        <div class="invalid-feedback">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
 
                                 </div>
 
@@ -81,23 +81,24 @@
                                     <div class="form-floating">
                                         <input
                                         type="password"
-                                        class="form-control border-top-0 border-start-0 border-end-0"
+                                        class="form-control border-top-0 border-start-0 border-end-0 @error('password') is-invalid @enderror"
                                         name="password"
                                         id="password"
                                         placeholder="password"
                                         />
                                         <label for="password" class="form-label">Password</label>
+
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <span class="input-group-text bg-white border-top-0 border-start-0 border-end-0">
                                         <img class="img-fluid" role="button" src="{{ Vite::asset('resources/assets/auth/password-show-toggle.svg') }}" alt="lock" id="password-show-toggle">
                                     </span>
 
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
                                 </div>
 
                                 {{-- PASSWORD CONFIRM--}}
@@ -109,23 +110,24 @@
                                     <div class="form-floating">
                                         <input
                                         type="password"
-                                        class="form-control border-top-0 border-start-0 border-end-0"
+                                        class="form-control border-top-0 border-start-0 border-end-0 @error('password_confirmation') is-invalid @enderror"
                                         name="password_confirmation"
                                         id="password_confirmation"
                                         placeholder="password"
                                         />
                                         <label for="password_confirmation" class="form-label">Conferma Password</label>
+
+                                        @error('password_confirmation')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <span class="input-group-text bg-white border-top-0 border-start-0 border-end-0">
                                         <img class="img-fluid" role="button" src="{{ Vite::asset('resources/assets/auth/password-show-toggle.svg') }}" alt="lock" id="password-confirmation-show-toggle">
                                     </span>
 
-                                    @error('password_confirmation')
-                                        <div class="invalid-feedback">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
                                 </div>
                                 {{-- SUBMIT BUTTON --}}
                                 <button type="submit" class="w-100 auth-button my-3">Login</button>
@@ -135,11 +137,9 @@
                                 <div class="d-flex justify-content-center">
                                     <div class="text-center">
                                         <p>or continue with</p>
-                                        <img class="img-fluid me-3 " role="button" style="height: 54px;" src="{{ Vite::asset('resources/assets/auth/google.svg') }}" alt="Google">
-
-                                        <img class="img-fluid me-3" role="button" style="height: 54px;" src="{{ Vite::asset('resources/assets/auth/apple.svg') }}" alt="Apple">
-
-                                        <img class="img-fluid me-3" role="button" style="height: 54px;" src="{{ Vite::asset('resources/assets/auth/github.png') }}" alt="Github">
+                                        <a href="{{route('auth.google')}}">
+                                            <img class="img-fluid me-3 " role="button" style="height: 74px;" src="{{ Vite::asset('resources/assets/auth/google.svg') }}" alt="Google">
+                                        </a>
                                     </div>
 
                                 </div>

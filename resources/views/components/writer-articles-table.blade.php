@@ -27,7 +27,7 @@
                 <td>
                     <a href="{{ route('article.show', compact ('article')) }}" class="btn btn-primary btn-sm">Leggi l'articolo</a>
                     <a href="{{ route('article.edit', compact ('article')) }}" class="btn btn-warning btn-sm">Modifica l'articolo</a>
-                    <form action="{{route('article.destroy', compact('article'))}}" method="POST" class="d-inline">
+                    <form action="{{route('article.destroy', compact('article'))}}" method="POST" class="d-inline" onsubmit="return confirm('Sei sicuro di voler cancellare questo articolo?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Elimina l'articolo</button>

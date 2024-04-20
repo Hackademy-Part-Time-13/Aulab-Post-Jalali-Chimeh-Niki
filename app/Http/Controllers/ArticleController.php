@@ -44,7 +44,7 @@ class ArticleController extends Controller
             'title'=>'required|unique:articles|min:5',
             'subtitle'=>'required|unique:articles|min:5',
             'body'=>'required|min:10',
-            'image'=>'image'|'nullable',
+            'image'=>'image|nullable',
             'category'=>'required',
             'tags'=>'required',
         ]);
@@ -91,31 +91,34 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+
         $request->validate([
-            'title'=>'required|min:5|unique:articles,title,'.$article->id,
-            'subtitle'=>'required|min:5|unique:articles,subtitle,'.$article->id,
+            'title'=>'required|min:5|unique:articles,title,' . $article->id,
+            'subtitle'=>'required|min:5|unique:articles,subtitle,' . $article->id,
             'body'=>'required|min:10',
-            'image'=>'image'|'nullable',
+            'image'=>'image|nullable',
             'category'=>'required',
             'tags'=>'required',
         ]);
+
+        if($request->hasFile('image')&& $article->image) {
+            Storage::delete($article->image);
+            $imagePath = $request->file('image')->store('public/images');
+        } else if ($request->hasFile('image') && !$article->image){
+            $imagePath = $request->file('image')->store('public/images');   
+        } else {
+            $imagePath = $article->image;
+        }
 
         $article->update([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'body' => $request->body,
-            'image' => $request->hasFile('image') ? $request->file('image')->store('public/images') : null,
+            'image' => $imagePath,
             'category_id' => $request->category,
             'user_id' => Auth::user()->id,
             'slug'=>Str::slug($request->title),
         ]);
-
-        if($request->image) {
-            Storage::delete($article->image);
-            $article->update([
-                'image' => $request->file('image')->store('public/images'),
-            ]);
-        }
 
         $tags = explode(', ',$request->tags);
         $newTags = [];
@@ -135,6 +138,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        
+
         foreach($article->tags as $tag){
             $article->tags()->detach($tag);
         }
